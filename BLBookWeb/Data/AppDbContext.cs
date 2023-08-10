@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BLBookWeb.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BLBookWeb.Data
 {
@@ -8,5 +9,7 @@ namespace BLBookWeb.Data
 		{
 			
 		}
+
+		public DbSet<Category> Categories { get; set; } 
 	}
 }
