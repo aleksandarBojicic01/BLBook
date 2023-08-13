@@ -1,6 +1,6 @@
 ﻿@model Category
 
-<h1 class="pb-3">Create new Category</h1>
+<h1 class="pb-3">Edit Category</h1>
 
 <form method="post" class="border border-primary rounded p-4 bg-dark">
 	<label asp-for="Name" class="text-light pb-2"></label>
@@ -11,7 +11,7 @@
 	<input asp-for="DisplayOrder" class="form-control rounded"/>
 	<span asp-validation-for="DisplayOrder" class="text-danger"></span>
 	<br/>
-	<button type="submit" class="btn btn-primary mt-3">Create Category</button>
+	<button type="submit" class="btn btn-primary mt-3">Save Changes</button>
 	<a asp-controller="Category" asp-action="Index" class="btn btn-secondary mt-3">Back to List</a>
 </form>
 
