@@ -1,7 +1,7 @@
-﻿using BLBookWeb.Models;
+﻿using BLBook.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace BLBookWeb.Data
+namespace BLBook.DataAccess.Data
 {
 	public class AppDbContext : DbContext
 	{

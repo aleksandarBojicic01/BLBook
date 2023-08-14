@@ -4,7 +4,7 @@
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace BLBookWeb.Migrations
+namespace BLBook.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class AddDataToCategories : Migration
