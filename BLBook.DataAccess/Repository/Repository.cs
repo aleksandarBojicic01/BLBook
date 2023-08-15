@@ -26,8 +26,6 @@ namespace BLBook.DataAccess.Repository
 			return query.ToList();
 		}
 
-		// moguc problem 5:10:00 -------
-		// prepravljeno
 		public T GetSingle(Expression<Func<T, bool>> filter)
 		{
 			IQueryable<T> query = dbSet;
