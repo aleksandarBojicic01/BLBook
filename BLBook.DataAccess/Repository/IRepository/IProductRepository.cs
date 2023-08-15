@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLBook.DataAccess.Repository.IRepository
 {
-	public interface IUnitOfWork
+	internal interface IProductRepository
 	{
-		ICategoryRepository CategoryRepository { get; }
-		IProductRepository ProductRepository { get; }
-		void Save();
 	}
 }
