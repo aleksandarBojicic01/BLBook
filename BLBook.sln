@@ -4,12 +4,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLBookWeb", "BLBookWeb\BLBookWeb.csproj", "{A24BEA72-9648-4482-8588-FA625E594A0D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{ADFFCD5E-03C4-4F2B-A763-F978D6342389} = {ADFFCD5E-03C4-4F2B-A763-F978D6342389}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLBook.DataAccess", "BLBook.DataAccess\BLBook.DataAccess.csproj", "{CBE27C5C-A12B-400A-AE7D-32B9ED083CF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLBook.DataAccess", "BLBook.DataAccess\BLBook.DataAccess.csproj", "{CBE27C5C-A12B-400A-AE7D-32B9ED083CF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLBook.Models", "BLBook.Models\BLBook.Models.csproj", "{ADFFCD5E-03C4-4F2B-A763-F978D6342389}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLBook.Models", "BLBook.Models\BLBook.Models.csproj", "{ADFFCD5E-03C4-4F2B-A763-F978D6342389}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLBook.Utility", "BLBook.Utility\BLBook.Utility.csproj", "{CD63D4BA-8AE3-4E7E-B897-0DD3E336518A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLBook.Utility", "BLBook.Utility\BLBook.Utility.csproj", "{CD63D4BA-8AE3-4E7E-B897-0DD3E336518A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

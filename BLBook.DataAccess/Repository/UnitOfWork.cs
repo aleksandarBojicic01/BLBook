@@ -5,21 +5,22 @@ using System.Text;
 using System.Threading.Tasks;
 using BLBook.DataAccess.Data;
 using BLBook.DataAccess.Repository.IRepository;
-using BLBook.Models;
 
 namespace BLBook.DataAccess.Repository
 {
-	public class CategoryRepository : Repository<Category>, ICategoryRepository
+	public class UnitOfWork : IUnitOfWork
 	{
 		private readonly AppDbContext _db;
-		public CategoryRepository(AppDbContext db) : base(db)
+		public ICategoryRepository CategoryRepository { get; private set; }
+		public UnitOfWork(AppDbContext db)
 		{
 			_db = db;
+			CategoryRepository = new CategoryRepository(_db);
 		}
-
-		public void Update(Category category)
+		
+		public void Save()
 		{
-			_db.Categories.Update(category);
+			_db.SaveChanges();
 		}
 	}
 }
