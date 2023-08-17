@@ -1,7 +1,9 @@
 ﻿using BLBook.DataAccess.Repository;
 using BLBook.DataAccess.Repository.IRepository;
 using BLBook.Models;
+using BLBook.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BLBookWeb.Areas.Admin.Controllers
 {
@@ -19,22 +21,50 @@ namespace BLBookWeb.Areas.Admin.Controllers
 			return View(productsFromDb);
 		}
 
-		public IActionResult Create()
+		public IActionResult Upsert(int? id)
 		{
-			return View();
+            IEnumerable<SelectListItem> CategoryList = _uow.CategoryRepository.GetAll().Select(u => new SelectListItem
+            {
+                Text = u.Name,
+                Value = u.Id.ToString()
+            });
+
+            ProductVM productVM = new()
+            {
+                Product = new Product(),
+                CategoryList = CategoryList
+            };
+            if (id == null || id == 0)
+            {
+                return View(productVM);
+            }
+            else
+            {
+                productVM.Product = _uow.ProductRepository.GetSingle(u => u.Id == id);
+                return View(productVM);
+            }
+            
 		}
 
 		[HttpPost]
-		public IActionResult Create(Product product)
+		public IActionResult Upsert(ProductVM obj, IFormFile file)
 		{
 			if (ModelState.IsValid)
 			{
-				_uow.ProductRepository.Add(product);
+				_uow.ProductRepository.Add(obj.Product);
 				_uow.Save();
 				TempData["success"] = "Product created successfully!";
 				return RedirectToAction("Index");
 			}
-			return View();
+            else
+            {
+                obj.CategoryList = _uow.CategoryRepository.GetAll().Select(u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString()
+                });
+                return View(obj);
+            }
 		}
 
         public IActionResult Edit(int? id)
