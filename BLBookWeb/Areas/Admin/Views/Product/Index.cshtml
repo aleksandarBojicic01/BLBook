@@ -9,18 +9,19 @@
     </div>
 </div>
 
-<table class="table table-bordered table-striped my-3">
+<table id="tblData" class="table table-bordered table-striped my-3 w-100">
     <thead>
     <tr>
-        <th>Id</th>
         <th>Title</th>
-        <th>Author</th>
+        <th>ISBN</th>
         <th>List Price</th>
+        <th>Author</th>
         <th>Category</th>
         <th></th>
     </tr>
     </thead>
-    <tbody>
+    @* stara tabela bez TableData
+        <tbody>
     @foreach (var obj in Model.OrderBy(u=>u.Title))
     {
         <tr>
@@ -28,7 +29,7 @@
             <td>@obj.Title</td>
             <td>@obj.Author</td>
             <td>$@obj.ListPrice</td>
-            <td></td>
+            <td>@obj.Category.Name</td>
             <td>
                 <div class="button-group">
                     <a asp-controller="Product" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i> Edit</a>
@@ -37,5 +38,9 @@
             </td>
         </tr>
     }
-    </tbody>
+    </tbody>*@
 </table>
+
+@section Scripts{
+    <script src="~/js/product.js"></script>
+}

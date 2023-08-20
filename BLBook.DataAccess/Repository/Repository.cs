@@ -18,19 +18,36 @@ namespace BLBook.DataAccess.Repository
 		{
 			_db = db;
 			dbSet = _db.Set<T>();
+			_db.Products.Include(u => u.Category);
 		}
 
-		public IEnumerable<T> GetAll()
+		public IEnumerable<T> GetAll(string? includeProperties = null)
 		{
 			IQueryable<T> query = dbSet;
+			if (!string.IsNullOrEmpty(includeProperties))
+			{
+				foreach (var prop in includeProperties
+					.Split(',', StringSplitOptions.RemoveEmptyEntries)) 
+				{
+					query = query.Include(prop);
+				}
+			}
 			return query.ToList();
 		}
 
-		public T GetSingle(Expression<Func<T, bool>> filter)
+		public T GetSingle(Expression<Func<T, bool>> filter, string? includeProperties = null)
 		{
 			IQueryable<T> query = dbSet;
 			query = query.Where(filter);
-			return query.FirstOrDefault();
+            if (!string.IsNullOrEmpty(includeProperties))
+            {
+                foreach (var prop in includeProperties
+                    .Split(',', StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(prop);
+                }
+            }
+            return query.FirstOrDefault();
 		}
 
 		public void Add(T obj)
