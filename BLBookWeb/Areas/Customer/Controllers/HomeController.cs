@@ -23,6 +23,12 @@ namespace BLBookWeb.Areas.Customer.Controllers
             return View(products);
         }
 
+        public IActionResult Details(int? id)
+        {
+            Product? product = _uow.ProductRepository.GetSingle(u => u.Id == id, includeProperties: "Category");
+            return View(product);
+        }
+
         public IActionResult Privacy()
         {
             return View();
