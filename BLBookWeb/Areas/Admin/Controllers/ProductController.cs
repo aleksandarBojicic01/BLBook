@@ -2,13 +2,17 @@
 using BLBook.DataAccess.Repository.IRepository;
 using BLBook.Models;
 using BLBook.Models.ViewModels;
+using BLBook.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Data;
 
 namespace BLBookWeb.Areas.Admin.Controllers
 {
 	[Area("Admin")]
-	public class ProductController : Controller
+    [Authorize(Roles = SD.Role_Admin)]
+    public class ProductController : Controller
 	{
 		private readonly IUnitOfWork _uow;
         private readonly IWebHostEnvironment _webHostEnvironment;

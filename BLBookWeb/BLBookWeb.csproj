@@ -20,10 +20,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BLBook.DataAccess\BLBook.DataAccess.csproj" />
+    <ProjectReference Include="..\BLBook.Utility\BLBook.Utility.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Identity\Data\" />
     <Folder Include="wwwroot\images\product\" />
   </ItemGroup>
 
